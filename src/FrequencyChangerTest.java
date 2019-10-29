@@ -1,5 +1,3 @@
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 class FrequencyChangerTest {
 	
-
 	private ArrayList<String> readInputAsArrayOfStrings() throws FileNotFoundException{
-		Scanner s = new Scanner(new File("inputFrequency.txt"));
+		Scanner s = new Scanner(new File("inputFrequencyChanges.txt"));
 	    ArrayList<String> list = new ArrayList<String>();
-	    while (s.hasNext()){
+	    
+	    while (s.hasNext()) {
 	        list.add(s.next());
 	    }
 	    s.close();
@@ -25,7 +23,7 @@ class FrequencyChangerTest {
 		int length = list.size();
 		int[] newArray = new int[length];
 		
-		for (int i = 0; i <length; i++) {
+		for (int i = 0; i <length; i++){
 			newArray[i] = Integer.valueOf(list.get(i));
 		}
 		
@@ -56,7 +54,6 @@ class FrequencyChangerTest {
 	@Test
 	void frequencyHits14Twice() {
 		FrequencyChanger freguencyChanger = new FrequencyChanger();
-		
 		int[] testArray = {+7, +7, -2, -7, -4};
 		freguencyChanger.changeFrequencyUntilFrequencyisTwice(testArray);
 		assert(freguencyChanger.getFirstFrequencyToAppearTwice() == 14);
@@ -64,8 +61,7 @@ class FrequencyChangerTest {
 	
 	@Test
 	void inputFileResultsIn525() throws FileNotFoundException {
-		FrequencyChanger freguencyChanger = new FrequencyChanger();
-		
+		FrequencyChanger freguencyChanger = new FrequencyChanger();	
 		ArrayList<String> myInputAsArrayList = readInputAsArrayOfStrings();
 		int[] input = getInputAsArray(myInputAsArrayList);
 		
@@ -77,7 +73,6 @@ class FrequencyChangerTest {
 	@Test
 	void inputFileResultsIn75749Twice() throws FileNotFoundException {
 		FrequencyChanger freguencyChanger = new FrequencyChanger();
-		
 		ArrayList<String> myInputAsArrayList = readInputAsArrayOfStrings();
 		int[] input = getInputAsArray(myInputAsArrayList);
 		

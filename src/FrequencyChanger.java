@@ -20,14 +20,15 @@ public class FrequencyChanger {
 	
 	void changeFrequencyNTimes(int[] n) {
 		
-		for(int i = 0; i < n.length; i++) {
+		for (int i = 0; i < n.length; i++) {
 			
 			changeFrequency(n[i]);
-
+			
 			if(frequencies.contains(currentFrequency) && (isFirst == false)) {
 				firstFrequency = currentFrequency;
 				isFirst = true;
 			}
+			
 			frequencies.add(currentFrequency);
 		}
 
