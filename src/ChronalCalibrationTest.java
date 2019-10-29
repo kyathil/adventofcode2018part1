@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-class FrequencyChangerTest {
+class ChronalCalibrationTest {
 	
 	private ArrayList<String> readInputAsArrayOfStrings() throws FileNotFoundException{
-		Scanner s = new Scanner(new File("inputFrequencyChanges.txt"));
+		Scanner s = new Scanner(new File("ChronalCalibrationInput.txt"));
 	    ArrayList<String> list = new ArrayList<String>();
 	    
 	    while (s.hasNext()) {
@@ -33,7 +33,7 @@ class FrequencyChangerTest {
 
 	@Test
 	void test() {
-		FrequencyChanger freguencyChanger = new FrequencyChanger();
+		ChronalCalibration freguencyChanger = new ChronalCalibration();
 		
 		int[] testArray = {+1,+1,-2};
 		freguencyChanger.changeFrequencyNTimes(testArray);
@@ -43,7 +43,7 @@ class FrequencyChangerTest {
 	
 	@Test
 	void onlyNegativeInput() {
-		FrequencyChanger freguencyChanger = new FrequencyChanger();
+		ChronalCalibration freguencyChanger = new ChronalCalibration();
 		
 		int[] testArray = {-1,-2,-3};
 		freguencyChanger.changeFrequencyNTimes(testArray);
@@ -53,7 +53,7 @@ class FrequencyChangerTest {
 	
 	@Test
 	void frequencyHits14Twice() {
-		FrequencyChanger freguencyChanger = new FrequencyChanger();
+		ChronalCalibration freguencyChanger = new ChronalCalibration();
 		int[] testArray = {+7, +7, -2, -7, -4};
 		freguencyChanger.changeFrequencyUntilFrequencyisTwice(testArray);
 		assert(freguencyChanger.getFirstFrequencyToAppearTwice() == 14);
@@ -61,7 +61,7 @@ class FrequencyChangerTest {
 	
 	@Test
 	void inputFileResultsIn525() throws FileNotFoundException {
-		FrequencyChanger freguencyChanger = new FrequencyChanger();	
+		ChronalCalibration freguencyChanger = new ChronalCalibration();	
 		ArrayList<String> myInputAsArrayList = readInputAsArrayOfStrings();
 		int[] input = getInputAsArray(myInputAsArrayList);
 		
@@ -72,7 +72,7 @@ class FrequencyChangerTest {
 	
 	@Test
 	void inputFileResultsIn75749Twice() throws FileNotFoundException {
-		FrequencyChanger freguencyChanger = new FrequencyChanger();
+		ChronalCalibration freguencyChanger = new ChronalCalibration();
 		ArrayList<String> myInputAsArrayList = readInputAsArrayOfStrings();
 		int[] input = getInputAsArray(myInputAsArrayList);
 		

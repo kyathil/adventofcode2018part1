@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
-public class FrequencyChanger {
+public class ChronalCalibration {
 	private int currentFrequency;
 	private boolean isFirst; 
 	private int firstFrequency;
 	ArrayList<Integer> frequencies;
 	
-	FrequencyChanger(){
+	ChronalCalibration(){
 		currentFrequency = 0;
 		isFirst = false;
 		firstFrequency = 0;
