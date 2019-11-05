@@ -23,7 +23,7 @@ public class InventoryManagementSystem {
         return listOfChars;
 	}
 	
-	public void checkInputForDoublesAndTriples(ArrayList<String> input) {
+	void checkInputForDoublesAndTriples(ArrayList<String> input) {
 		
 		for(String string: input) {
 			ArrayList<Character> chars = turnStringToList(string);
@@ -32,7 +32,7 @@ public class InventoryManagementSystem {
 		setCheckSum(getNumberOfDoubles(), getNumberOfTriples());
 	}
 	
-	public void checkTriplesAndDoubles(ArrayList<Character> chars) {
+	void checkTriplesAndDoubles(ArrayList<Character> chars) {
 		ArrayList<Character> triples = new ArrayList<Character>();
 		ArrayList<Character> doubles = new ArrayList<Character>();
 		boolean gotDoubles = false;
@@ -79,5 +79,55 @@ public class InventoryManagementSystem {
 	public int getCheckSum() {
 		return checkSum;
 	}
+	
+	String findCorrectCheckID(ArrayList<String> list) {
+		String result = "";
+		
+		while(!list.isEmpty()) {
+			String firstElemInList = list.get(0);
+			list.remove(0);
+			String temp = findStringWithMostCommonChars(firstElemInList, list);
+			
+			if (temp.length() > result.length()) {
+				result = temp;
+			}
+		}
+		
+		return result;
+		
+	}
+	
+	String findStringWithMostCommonChars(String stringToCompare, ArrayList<String> list) {
+		
+		String result = "";
+		int noOfCommons = 0;
+		
+		for (int i = 0; i < list.size(); i++) {
+			
+			String temp = removeDiff(stringToCompare, list.get(i));
+			
+			if (temp.length() >= noOfCommons) {
+				noOfCommons = temp.length();
+				result = temp;
+				
+			}
+		}
+		
+		return result;
+	}
+	
+	
+	String removeDiff(String string, String stringToCompare) {
+		String result = "";
+		
+		for (int i = 0; i < stringToCompare.length(); i++) {
+            if (string.charAt(i) == stringToCompare.charAt(i)) {
+                result += string.charAt(i);
+            }
+		}
+		
+        return result;
+	}
+
 
 }

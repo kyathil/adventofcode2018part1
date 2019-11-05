@@ -1,5 +1,3 @@
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -86,7 +84,7 @@ class InventoryManagementSystemTest {
 	}
 	
 	@Test
-	void file_input() throws FileNotFoundException {
+	void check_doubles_and_triples_in_file_input() throws FileNotFoundException {
 		InventoryManagementSystem inventory = new InventoryManagementSystem();
 		ArrayList<String> myTestInput = readInputAsArrayOfStrings();
 		inventory.checkInputForDoublesAndTriples(myTestInput);
@@ -94,5 +92,62 @@ class InventoryManagementSystemTest {
 		assert(inventory.getNumberOfDoubles() > 0 && inventory.getNumberOfTriples() > 0);
 		assert(inventory.getCheckSum() == 5880);
 	}
+	
+	@Test
+	void check_most_common_characters_of_first_elem_of_list() {
+		InventoryManagementSystem inventory = new InventoryManagementSystem();
+		ArrayList<String> myTestList = new ArrayList<String>();
+		
+		myTestList.add("abcde");
+		myTestList.add("fghij");
+		myTestList.add("klmno");
+		myTestList.add("pqrst");
+		myTestList.add("fguij");
+		myTestList.add("axcye");
+		myTestList.add("wvxyz");
+		
+		String firstString = myTestList.get(0);
+		myTestList.remove(0);
+		
+		assert(inventory.findStringWithMostCommonChars(firstString, myTestList).contentEquals("ace"));
 
+	}
+	
+	@Test
+	void compare_two_ids() {
+		InventoryManagementSystem inventory = new InventoryManagementSystem();
+		ArrayList<String> myTestList = new ArrayList<String>();
+		
+		myTestList.add("fghij");
+		myTestList.add("fguij");
+		
+		assert(inventory.removeDiff("fghij", "fguij").contentEquals("fgij"));
+
+	}
+	
+	@Test
+	void check_most_common_characters_in_list() {
+		InventoryManagementSystem inventory = new InventoryManagementSystem();
+		ArrayList<String> myTestList = new ArrayList<String>();
+		
+		myTestList.add("abcde");
+		myTestList.add("fghij");
+		myTestList.add("klmno");
+		myTestList.add("pqrst");
+		myTestList.add("fguij");
+		myTestList.add("axcye");
+		myTestList.add("wvxyz");
+
+		assert(inventory.findCorrectCheckID(myTestList).contentEquals("fgij"));
+
+	}
+	
+	@Test
+	void check_most_common_chars_in_file_input() throws FileNotFoundException {
+		InventoryManagementSystem inventory = new InventoryManagementSystem();
+		ArrayList<String> myTestInput = readInputAsArrayOfStrings();
+		
+		assert(inventory.findCorrectCheckID(myTestInput).equals("tiwcdpbseqhxryfmgkvjujvza"));
+	}
+	
 }
